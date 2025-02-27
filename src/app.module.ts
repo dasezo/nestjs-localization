@@ -4,7 +4,8 @@ import { AppService } from './app.service';
 import { InfoModule } from './info/info.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { PostsModule } from './posts/posts.module';
-import { I18nModule, QueryResolver } from 'nestjs-i18n';
+import { I18nModule, I18nYamlLoader, QueryResolver } from 'nestjs-i18n';
+import { YcI18nModule } from './yc-i18n/yc-i18n.module';
 import * as path from 'path';
 
 @Module({
@@ -18,14 +19,17 @@ import * as path from 'path';
     }),
     I18nModule.forRoot({
       fallbackLanguage: 'en',
+      loader: I18nYamlLoader,
       loaderOptions: {
         path: path.join(__dirname, '/locales/'),
         watch: true,
       },
       resolvers: [new QueryResolver(['lang'])],
+      typesOutputPath: path.join(__dirname, '../src/generated/i18n.generated.ts'),
     }),
     InfoModule,
     PostsModule,
+    YcI18nModule,
   ],
   controllers: [AppController],
   providers: [AppService],

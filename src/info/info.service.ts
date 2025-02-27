@@ -1,10 +1,13 @@
 import { Injectable } from '@nestjs/common';
+import { YcI18nService } from '../yc-i18n/yc-i18n.service';
 
 @Injectable()
 export class InfoService {
+  constructor(private readonly i18n: YcI18nService) {}
+
   getInfo() {
     return {
-      about: 'yogger chicken: a headless running blog',
+      about: this.i18n.t('common.'),
       lastUpdated: new Date().toISOString(),
       routes: [
         {
