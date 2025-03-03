@@ -1,13 +1,14 @@
 import { Injectable } from '@nestjs/common';
-import { YcI18nService } from '../yc-i18n/yc-i18n.service';
+import { I18nService } from 'nestjs-i18n';
+import { I18nTranslations } from '../generated/i18n.generated';
 
 @Injectable()
 export class InfoService {
-  constructor(private readonly i18n: YcI18nService) {}
+  constructor(private readonly i18n: I18nService<I18nTranslations>) {}
 
   getInfo() {
     return {
-      about: this.i18n.t('common.'),
+      about: this.i18n.t('common.about'),
       lastUpdated: new Date().toISOString(),
       routes: [
         {
