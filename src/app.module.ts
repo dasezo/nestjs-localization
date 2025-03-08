@@ -8,6 +8,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { PostsModule } from './posts/posts.module';
 import { ConfigModule } from '@nestjs/config';
 import { YcI18nModule } from './yc-i18n/yc-i18n.module';
+import { TodayController } from './today/today.controller';
 import * as process from 'node:process';
 
 @Module({
@@ -37,7 +38,7 @@ import * as process from 'node:process';
     PostsModule,
     YcI18nModule,
   ],
-  controllers: [AppController],
+  controllers: [AppController, TodayController],
   providers: [AppService],
 })
 export class AppModule {}

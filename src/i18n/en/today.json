@@ -1,0 +1,7 @@
+{
+  "plannedRun": {
+    "one": "Running a kilometer today",
+    "other": "Running {count} kilometers today",
+    "zero": "Resting today"
+  }
+}
